@@ -1,4 +1,4 @@
-# Ageing-Smart--designing-rooms-intelligently
+# Ageing-Smart (baby boomers)
 # project type - web scraping
 The project 
 "Ageing Smart – designing rooms intelligently" addresses the baby boomers born between 1955 and 1969 ("baby boomers") and their needs in the city as they enter the retiring age.
