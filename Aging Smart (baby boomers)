@@ -1,0 +1,35 @@
+import pandas as pd
+import snscrape.modules.twitter as sntwitter
+import itertools
+
+tweets_list = []
+loc_m = '49.4875, 8.4660, 10km'
+for i, tweet in enumerate(
+        sntwitter.TwitterSearchScraper('geocode:"{}" since:2021-12-12 until:2021-12-30'.format(loc_m)).get_items()):
+    if i > 200:
+        break
+    tweets_list.append([tweet.date, tweet.id, tweet.coordinates.longitude, tweet.coordinates.latitude, tweet.content,
+                        tweet.place.fullName, tweet.place.name, tweet.user.username, tweet.hashtags])
+
+df_man = pd.DataFrame(tweets_list,
+                      columns=['date', 'id', 'longitude', 'latitude', 'content', 'tweet place name', 'user place name',
+                               'username', 'hashtags'])
+
+csv_man = df_man.to_csv()
+
+tweets_list = []
+loc_j = '50.9271, 11.5892, 10km'
+for i, tweet in enumerate(
+        sntwitter.TwitterSearchScraper('geocode:"{}" since:2021-12-12 until:2021-12-30'.format(loc_j)).get_items()):
+    if i > 200:
+        break
+    tweets_list.append([tweet.date, tweet.id, tweet.coordinates.longitude, tweet.coordinates.latitude, tweet.content,
+                        tweet.place.fullName, tweet.place.name, tweet.user.username, tweet.hashtags])
+
+df_jena = pd.DataFrame(tweets_list,
+                       columns=['date', 'id', 'longitude', 'latitude', 'content', 'tweet place name', 'user place name',
+                                'username', 'hashtags'])
+
+csv_jena = df_jena.to_csv()
+print(csv_jena)
+print(csv_man)
